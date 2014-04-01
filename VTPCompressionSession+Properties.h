@@ -143,7 +143,7 @@
 - (BOOL)setMaxKeyframeIntervalDuration:(NSTimeInterval)maxKeyFrameIntervalDuration error:(NSError **)error;
 
 - (BOOL)allowTemporalCompression;
-- (BOOL)setAllowTemporalComtrossion:(BOOL)allowTemporalCompression error:(NSError **)error;
+- (BOOL)setAllowTemporalCompression:(BOOL)allowTemporalCompression error:(NSError **)error;
 
 - (BOOL)allowFrameReordering;
 - (BOOL)setAllowFrameReordering:(BOOL)allowFrameReordering error:(NSError **)error;

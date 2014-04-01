@@ -39,7 +39,7 @@
 	return value.boolValue;
 }
 
-- (BOOL)setAllowTemporalComtrossion:(BOOL)allowTemporalCompression error:(NSError **)error
+- (BOOL)setAllowTemporalCompression:(BOOL)allowTemporalCompression error:(NSError **)error
 {
 	return [self setValue:@(allowTemporalCompression) forProperty:VTPCompressionPropertyKeyAllowTemporalCompression error:error];
 }
