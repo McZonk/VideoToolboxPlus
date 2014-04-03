@@ -8,6 +8,8 @@
 @property (nonatomic, weak, readwrite) id<VTPCompressionSessionDelegate> delegate;
 @property (nonatomic, strong, readwrite) dispatch_queue_t delegateQueue;
 
+@property (nonatomic, assign) BOOL forceNextKeyframe;
+
 @end
 
 
@@ -35,6 +37,8 @@
 			
 			return nil;
 		}
+		
+		self.forceNextKeyframe = YES;
 	}
 	return self;
 }
@@ -104,6 +108,8 @@
 - (void)prepareToEncodeFrames
 {
 	VTCompressionSessionPrepareToEncodeFrames(compressionSession);
+
+	self.forceNextKeyframe = YES;
 }
 
 - (BOOL)encodeSampleBuffer:(CMSampleBufferRef)sampleBuffer forceKeyframe:(BOOL)forceKeyframe
@@ -120,11 +126,13 @@
 {
 	NSDictionary *properties = nil;
 	
-	if(forceKeyframe)
+	if(forceKeyframe || self.forceNextKeyframe)
 	{
 		properties = @{
 			(__bridge NSString *)kVTEncodeFrameOptionKey_ForceKeyFrame: @YES
 		};
+		
+		self.forceNextKeyframe = NO;
 	}
 	
 	OSStatus status = VTCompressionSessionEncodeFrame(compressionSession, pixelBuffer, presentationTimeStamp, duration, (__bridge CFDictionaryRef)properties, pixelBuffer, NULL);
