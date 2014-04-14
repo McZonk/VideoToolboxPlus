@@ -147,11 +147,11 @@
 	
 	if(infoFlags & kVTEncodeInfo_FrameDropped)
 	{
-		if([delegate respondsToSelector:@selector(compressionSession:didDropSampleBuffer:)])
+		if([delegate respondsToSelector:@selector(videoCompressionSession:didDropSampleBuffer:)])
 		{
 			CFRetain(sampleBuffer);
 			dispatch_async(delegateQueue, ^{
-				[delegate compressionSession:self didDropSampleBuffer:sampleBuffer];
+				[delegate videoCompressionSession:self didDropSampleBuffer:sampleBuffer];
 				
 				CFRelease(sampleBuffer);
 			});
@@ -159,11 +159,11 @@
 	}
 	else
 	{
-		if([delegate respondsToSelector:@selector(compressionSession:didEncodeSampleBuffer:)])
+		if([delegate respondsToSelector:@selector(videoCompressionSession:didEncodeSampleBuffer:)])
 		{
 			CFRetain(sampleBuffer);
 			dispatch_async(delegateQueue, ^{
-				[delegate compressionSession:self didEncodeSampleBuffer:sampleBuffer];
+				[delegate videoCompressionSession:self didEncodeSampleBuffer:sampleBuffer];
 			
 				CFRelease(sampleBuffer);
 			});
