@@ -5,10 +5,8 @@
 
 @interface VTPCompressionSession ()
 
-@property (nonatomic, weak, readwrite) id<VTPCompressionSessionDelegate> delegate;
-@property (nonatomic, strong, readwrite) dispatch_queue_t delegateQueue;
-
-@property (nonatomic, assign) BOOL forceNextKeyframe;
+@property (nonatomic, weak) id<VTPCompressionSessionDelegate> delegate;
+@property (nonatomic, strong) dispatch_queue_t delegateQueue;
 
 @end
 
@@ -20,7 +18,9 @@
 	self = [super init];
 	if(self != nil)
 	{
-		NSDictionary *encoderSpecification = @{ (__bridge NSString *)kVTVideoEncoderSpecification_EnableHardwareAcceleratedVideoEncoder: @YES };
+		NSDictionary *encoderSpecification = @{
+			(__bridge NSString *)kVTVideoEncoderSpecification_EnableHardwareAcceleratedVideoEncoder: @YES
+		};
 
 		OSStatus status = VTCompressionSessionCreate(NULL, (int32_t)width, (int32_t)height, codec, (__bridge CFDictionaryRef)encoderSpecification, NULL, NULL, VideoCompressonOutputCallback, (__bridge void *)self, &compressionSession);
 		if(status != noErr)
@@ -37,8 +37,6 @@
 			
 			return nil;
 		}
-		
-		self.forceNextKeyframe = YES;
 	}
 	return self;
 }
@@ -105,11 +103,9 @@
 	return YES;
 }
 
-- (void)prepareToEncodeFrames
+- (void)prepare
 {
 	VTCompressionSessionPrepareToEncodeFrames(compressionSession);
-
-	self.forceNextKeyframe = YES;
 }
 
 - (BOOL)encodeSampleBuffer:(CMSampleBufferRef)sampleBuffer forceKeyframe:(BOOL)forceKeyframe
@@ -126,17 +122,27 @@
 {
 	NSDictionary *properties = nil;
 	
-	if(forceKeyframe || self.forceNextKeyframe)
+	if(forceKeyframe)
 	{
 		properties = @{
 			(__bridge NSString *)kVTEncodeFrameOptionKey_ForceKeyFrame: @YES
 		};
-		
-		self.forceNextKeyframe = NO;
 	}
 	
 	OSStatus status = VTCompressionSessionEncodeFrame(compressionSession, pixelBuffer, presentationTimeStamp, duration, (__bridge CFDictionaryRef)properties, pixelBuffer, NULL);
 	
+	return status == noErr;
+}
+
+- (BOOL)finish
+{
+	return [self finishUntilPresentationTimeStamp:kCMTimeIndefinite];
+}
+
+- (BOOL)finishUntilPresentationTimeStamp:(CMTime)presentationTimeStamp
+{
+	OSStatus status = VTCompressionSessionCompleteFrames(compressionSession, presentationTimeStamp);
+
 	return status == noErr;
 }
 
