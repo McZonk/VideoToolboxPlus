@@ -140,7 +140,7 @@
 		509D91F518DF930800FC9A7A /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
-				LastUpgradeCheck = 0510;
+				LastUpgradeCheck = 0600;
 				ORGANIZATIONNAME = McZonk;
 			};
 			buildConfigurationList = 509D91F818DF930800FC9A7A /* Build configuration list for PBXProject "VideoToolboxPlus-OSX" */;
@@ -247,6 +247,7 @@
 		509D922218DF930800FC9A7A /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoToolboxPlus-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
@@ -256,6 +257,7 @@
 		509D922318DF930800FC9A7A /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				COMBINE_HIDPI_IMAGES = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "VideoToolboxPlus-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
