@@ -1,84 +1,8 @@
 #import "VTPCompressionSession.h"
 
-#define VTPCompressionPropertyKeyNumberOfPendingFrames ((__bridge NSString *)kVTCompressionPropertyKey_NumberOfPendingFrames)
-
 // kVTCompressionPropertyKey_PixelBufferPoolIsShared Read-only, Boolean
 	
 // kVTCompressionPropertyKey_VideoEncoderPixelBufferAttributes Read-only, CFDictionary
-
-#define VTPCompressionPropertyKeyMaxKeyFrameInterval ((__bridge NSString *)kVTCompressionPropertyKey_MaxKeyFrameInterval)
-
-#define VTPCompressionPropertyKeyMaxKeyFrameIntervalDuration ((__bridge NSString *)kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration)
-
-#define VTPCompressionPropertyKeyAllowTemporalCompression ((__bridge NSString *)kVTCompressionPropertyKey_AllowTemporalCompression)
-
-#define VTPCompressionPropertyKeyAllowFrameReordering ((__bridge NSString *)kVTCompressionPropertyKey_AllowFrameReordering)
-
-
-//	VT_EXPORT const CFStringRef kVTCompressionPropertyKey_AverageBitRate VT_AVAILABLE_STARTING(10_8); // Read/write, CFNumber<SInt32>, Optional
-	
-// VT_EXPORT const CFStringRef kVTCompressionPropertyKey_DataRateLimits VT_AVAILABLE_STARTING(10_8); // Read/write, CFArray[CFNumber], [bytes, seconds, bytes, seconds...], Optional
-
-#define VTPCompressionPropertyKeyQuality ((__bridge NSString *)kVTCompressionPropertyKey_Quality)
-
-// VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MoreFramesBeforeStart VT_AVAILABLE_STARTING(10_8); // Read/write, CFBoolean, Optional
-	
-// VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MoreFramesAfterEnd VT_AVAILABLE_STARTING(10_8); // Read/write, CFBoolean, Optional
-	
-#if 0
-	VT_EXPORT const CFStringRef kVTCompressionPropertyKey_ProfileLevel VT_AVAILABLE_STARTING(10_8); // Read/write, CFString (enumeration), Optional
-	
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_1_3 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_3_0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_3_1 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_3_2 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_4_0 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_4_1 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_4_2 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_5_0 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_5_1 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_5_2 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Baseline_AutoLevel VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_3_0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_3_1 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_3_2 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_4_0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_4_1 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_4_2 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_5_0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_5_1 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_5_2 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Main_AutoLevel VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Extended_5_0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_Extended_AutoLevel VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_3_0 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_3_1 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_3_2 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_4_0 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_4_1 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_4_2 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_5_0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_5_1 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_5_2 VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H264_High_AutoLevel VT_AVAILABLE_STARTING(10_9);
-	
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_Simple_L0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_Simple_L1 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_Simple_L2 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_Simple_L3 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_Main_L2 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_Main_L3 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_Main_L4 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_AdvancedSimple_L0 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_AdvancedSimple_L1 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_AdvancedSimple_L2 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_AdvancedSimple_L3 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_MP4V_AdvancedSimple_L4 VT_AVAILABLE_STARTING(10_8);
-	
-	VT_EXPORT const CFStringRef kVTProfileLevel_H263_Profile0_Level10 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H263_Profile0_Level45 VT_AVAILABLE_STARTING(10_8);
-	VT_EXPORT const CFStringRef kVTProfileLevel_H263_Profile3_Level45 VT_AVAILABLE_STARTING(10_8);
-#endif
 
 #if 0
 	VT_EXPORT const CFStringRef kVTCompressionPropertyKey_H264EntropyMode VT_AVAILABLE_STARTING(10_9);	// Read/write, CFString, optional
@@ -93,8 +17,6 @@
 	
 // VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MaxH264SliceBytes VT_AVAILABLE_STARTING(10_8); // Read/write, CFNumber<SInt32>, Optional
 	
-#define VTPCompressionPropertyKeyRealTime ((__bridge NSString *)kVTCompressionPropertyKey_RealTime)
-	
 // VT_EXPORT const CFStringRef kVTCompressionPropertyKey_SourceFrameCount VT_AVAILABLE_STARTING(10_8); // Read/write, CFNumber, Optional
 	
 // VT_EXPORT const CFStringRef kVTCompressionPropertyKey_ExpectedFrameRate VT_AVAILABLE_STARTING(10_8); // Read/write, CFNumber, Optional
@@ -104,8 +26,6 @@
 #define VTPVideoEncoderSpecificationEnableHardwareAcceleratedVideoEncoder ((__bridge NSString *)kVTVideoEncoderSpecification_EnableHardwareAcceleratedVideoEncoder)
 
 #define VTPVideoEncoderSpecificationRequireHardwareAcceleratedVideoEncoder ((__bridge NSString *)kVTVideoEncoderSpecification_RequireHardwareAcceleratedVideoEncoder)
-
-#define VTPCompressionPropertyKeyUsingHardwareAcceleratedVideoEncoder ((__bridge NSString *)kVTCompressionPropertyKey_UsingHardwareAcceleratedVideoEncoder)
 
 // VT_EXPORT const CFStringRef kVTEncodeFrameOptionKey_ForceKeyFrame VT_AVAILABLE_STARTING(10_8); //  CFBoolean
 	
@@ -134,23 +54,90 @@
 
 @interface VTPCompressionSession (Properties)
 
+/**
+ * @see kVTCompressionPropertyKey_NumberOfPendingFrames
+ */
 - (NSUInteger)numberOfPendingFrames;
 
+/**
+ * @see kVTCompressionPropertyKey_MaxKeyFrameInterval
+ */
 - (NSUInteger)maxKeyframeInterval;
+
+/**
+ * @see kVTCompressionPropertyKey_MaxKeyFrameInterval
+ */
 - (BOOL)setMaxKeyframeInterval:(NSUInteger)maxKeyFrameInterval error:(NSError **)error;
 
+/**
+ * @see kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration
+ */
 - (NSTimeInterval)maxKeyframeIntervalDuration;
+
+/**
+ * @see kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration
+ */
 - (BOOL)setMaxKeyframeIntervalDuration:(NSTimeInterval)maxKeyFrameIntervalDuration error:(NSError **)error;
 
+/**
+ * @see kVTCompressionPropertyKey_AllowTemporalCompression
+ */
 - (BOOL)allowTemporalCompression;
+
+/**
+ * @see kVTCompressionPropertyKey_AllowTemporalCompression
+ */
 - (BOOL)setAllowTemporalCompression:(BOOL)allowTemporalCompression error:(NSError **)error;
 
+/**
+ * @see kVTCompressionPropertyKey_AllowFrameReordering
+ */
 - (BOOL)allowFrameReordering;
+
+/**
+ * @see kVTCompressionPropertyKey_AllowFrameReordering
+ */
 - (BOOL)setAllowFrameReordering:(BOOL)allowFrameReordering error:(NSError **)error;
 
+/**
+ * @see kVTCompressionPropertyKey_AverageBitRate
+ */
+- (SInt32)averageBitrate;
+
+/**
+ * @see kVTCompressionPropertyKey_AverageBitRate
+ */
+- (BOOL)setAverageBitrate:(SInt32)averageBitrate error:(NSError **)error;
+
+// VT_EXPORT const CFStringRef kVTCompressionPropertyKey_DataRateLimits VT_AVAILABLE_STARTING(10_8); // Read/write, CFArray[CFNumber], [bytes, seconds, bytes, seconds...], Optional
+
+/**
+ * @see kVTCompressionPropertyKey_Quality
+ */
+- (float)quality;
+
+/**
+ * @see kVTCompressionPropertyKey_Quality
+ */
+- (BOOL)setQuality:(float)quality error:(NSError **)error;
+
+// VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MoreFramesBeforeStart VT_AVAILABLE_STARTING(10_8); // Read/write, CFBoolean, Optional
+
+// VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MoreFramesAfterEnd VT_AVAILABLE_STARTING(10_8); // Read/write, CFBoolean, Optional
+
+/**
+ * @see kVTCompressionPropertyKey_RealTime
+ */
 - (BOOL)realtime;
+
+/**
+ * @see kVTCompressionPropertyKey_RealTime
+ */
 - (BOOL)setRealtime:(BOOL)realtime error:(NSError **)error;
 
+/**
+ * @see kVTCompressionPropertyKey_UsingHardwareAcceleratedVideoEncoder
+ */
 - (BOOL)usingHardwareAcceleratedVideoEncoder;
 
 @end

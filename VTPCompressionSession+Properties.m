@@ -7,68 +7,100 @@
 
 - (NSUInteger)numberOfPendingFrames
 {
-	NSNumber *value = [self valueForProperty:VTPCompressionPropertyKeyNumberOfPendingFrames error:nil];
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_NumberOfPendingFrames error:nil];
 	return value.unsignedIntegerValue;
 }
 
 - (NSUInteger)maxKeyframeInterval
 {
-	NSNumber *value = [self valueForProperty:VTPCompressionPropertyKeyMaxKeyFrameInterval error:nil];
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_MaxKeyFrameInterval error:nil];
 	return value.unsignedIntegerValue;
 }
 
 - (BOOL)setMaxKeyframeInterval:(NSUInteger)maxKeyFrameInterval error:(NSError **)error
 {
-	return [self setValue:@(maxKeyFrameInterval) forProperty:VTPCompressionPropertyKeyMaxKeyFrameInterval error:error];
+	return [self setValue:@(maxKeyFrameInterval) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_MaxKeyFrameInterval  error:error];
 }
 
 - (NSTimeInterval)maxKeyframeIntervalDuration
 {
-	NSNumber *value = [self valueForProperty:VTPCompressionPropertyKeyMaxKeyFrameIntervalDuration error:nil];
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration error:nil];
 	return value.doubleValue;
 }
 
 - (BOOL)setMaxKeyframeIntervalDuration:(NSTimeInterval)maxKeyFrameIntervalDuration error:(NSError **)error
 {
-	return [self setValue:@(maxKeyFrameIntervalDuration) forProperty:VTPCompressionPropertyKeyMaxKeyFrameIntervalDuration error:error];
+	return [self setValue:@(maxKeyFrameIntervalDuration) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_MaxKeyFrameIntervalDuration error:error];
 }
 
 - (BOOL)allowTemporalCompression
 {
-	NSNumber *value = [self valueForProperty:VTPCompressionPropertyKeyAllowTemporalCompression error:nil];
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_AllowTemporalCompression error:nil];
 	return value.boolValue;
 }
 
 - (BOOL)setAllowTemporalCompression:(BOOL)allowTemporalCompression error:(NSError **)error
 {
-	return [self setValue:@(allowTemporalCompression) forProperty:VTPCompressionPropertyKeyAllowTemporalCompression error:error];
+	return [self setValue:@(allowTemporalCompression) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_AllowTemporalCompression error:error];
 }
 
 - (BOOL)allowFrameReordering
 {
-	NSNumber *value = [self valueForProperty:VTPCompressionPropertyKeyAllowFrameReordering error:nil];
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_AllowFrameReordering error:nil];
 	return value.boolValue;
 }
 
 - (BOOL)setAllowFrameReordering:(BOOL)allowFrameReordering error:(NSError **)error
 {
-	return [self setValue:@(allowFrameReordering) forProperty:VTPCompressionPropertyKeyAllowFrameReordering error:error];
+	return [self setValue:@(allowFrameReordering) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_AllowFrameReordering error:error];
+}
+
+- (SInt32)averageBitrate
+{
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_AverageBitRate error:nil];
+	return value.intValue;
+}
+
+- (BOOL)setAverageBitrate:(SInt32)averageBitrate error:(NSError **)error
+{
+	return [self setValue:@(averageBitrate) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_AverageBitRate error:error];
+}
+
+- (float)quality;
+{
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_Quality error:nil];
+	return value.floatValue;
+}
+
+- (BOOL)setQuality:(float)quality error:(NSError **)error;
+{
+	return [self setValue:@(quality) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_Quality error:error];
+}
+
+- (NSString *)profileLevel
+{
+	return [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_ProfileLevel error:nil];
+}
+
+- (BOOL)setProfileLevel:(NSString *)profileLevel error:(NSError **)error
+{
+	return [self setValue:profileLevel forProperty:(__bridge NSString *)kVTCompressionPropertyKey_ProfileLevel error:error];
 }
 
 - (BOOL)realtime
 {
-	NSNumber *value = [self valueForProperty:VTPCompressionPropertyKeyRealTime error:nil];
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_RealTime error:nil];
 	return value.boolValue;
 }
 
 - (BOOL)setRealtime:(BOOL)realtime error:(NSError **)error
 {
-	return [self setValue:@(realtime) forProperty:VTPCompressionPropertyKeyRealTime error:nil];
+	return [self setValue:@(realtime) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_RealTime error:nil];
 }
 
 - (BOOL)usingHardwareAcceleratedVideoEncoder
 {
-	NSNumber *value = [self valueForProperty:VTPCompressionPropertyKeyUsingHardwareAcceleratedVideoEncoder error:nil];
+	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_UsingHardwareAcceleratedVideoEncoder error:nil];
 	return value.boolValue;
 }
 
