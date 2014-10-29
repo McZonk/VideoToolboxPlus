@@ -109,7 +109,22 @@
  */
 - (BOOL)setAverageBitrate:(SInt32)averageBitrate error:(NSError **)error;
 
-// VT_EXPORT const CFStringRef kVTCompressionPropertyKey_DataRateLimits VT_AVAILABLE_STARTING(10_8); // Read/write, CFArray[CFNumber], [bytes, seconds, bytes, seconds...], Optional
+/**
+ * @see kVTCompressionPropertyKey_DataRateLimits
+ */
+- (NSArray *)dataRateLimits;
+
+/**
+ * @see kVTCompressionPropertyKey_DataRateLimits
+ */
+- (BOOL)setDataRateLimits:(NSArray *)dataRateLimits error:(NSError **)error;
+
+/**
+ * calls setDataRateLimits:@[ constantBitrate, 1.0 ]
+ * @see kVTCompressionPropertyKey_DataRateLimits
+ */
+- (BOOL)setConstantBitrate:(SInt32)constantBitrate error:(NSError **)error;
+
 
 /**
  * @see kVTCompressionPropertyKey_Quality

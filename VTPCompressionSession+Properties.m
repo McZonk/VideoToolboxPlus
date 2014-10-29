@@ -66,6 +66,22 @@
 	return [self setValue:@(averageBitrate) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_AverageBitRate error:error];
 }
 
+- (NSArray *)dataRateLimits
+{
+	return [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_DataRateLimits error:nil];
+}
+
+- (BOOL)setDataRateLimits:(NSArray *)dataRateLimits error:(NSError **)error
+{
+	return [self setValue:dataRateLimits forProperty:(__bridge NSString *)kVTCompressionPropertyKey_DataRateLimits error:error];
+}
+
+- (BOOL)setConstantBitrate:(SInt32)constantBitrate error:(NSError **)error
+{
+	NSArray *dataRateLimits = @[ @(constantBitrate), @1.0 ];
+	return [self setDataRateLimits:dataRateLimits error:error];
+}
+
 - (float)quality;
 {
 	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_Quality error:nil];
