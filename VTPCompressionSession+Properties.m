@@ -76,11 +76,18 @@
 	return [self setValue:dataRateLimits forProperty:(__bridge NSString *)kVTCompressionPropertyKey_DataRateLimits error:error];
 }
 
-- (BOOL)setConstantBitrate:(SInt32)constantBitrate error:(NSError **)error
+- (BOOL)setConstantBitrate:(SInt32)constantBitrate forInterval:(NSTimeInterval)interval error:(NSError **)error
 {
-	NSArray *dataRateLimits = @[ @(constantBitrate), @1.0 ];
+	NSArray *dataRateLimits = @[ @(constantBitrate), @(interval) ];
 	return [self setDataRateLimits:dataRateLimits error:error];
 }
+
+- (BOOL)setConstantBitrate:(SInt32)constantBitrate error:(NSError **)error
+{
+	return [self setConstantBitrate:constantBitrate forInterval:1.0 error:error];
+}
+
+
 
 - (float)quality;
 {

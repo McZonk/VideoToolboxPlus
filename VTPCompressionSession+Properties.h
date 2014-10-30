@@ -120,11 +120,16 @@
 - (BOOL)setDataRateLimits:(NSArray *)dataRateLimits error:(NSError **)error;
 
 /**
+ * calls setDataRateLimits:@[ constantBitrate, interval ]
+ * @see kVTCompressionPropertyKey_DataRateLimits
+ */
+- (BOOL)setConstantBitrate:(SInt32)constantBitrate forInterval:(NSTimeInterval)interval error:(NSError **)error;
+
+/**
  * calls setDataRateLimits:@[ constantBitrate, 1.0 ]
  * @see kVTCompressionPropertyKey_DataRateLimits
  */
 - (BOOL)setConstantBitrate:(SInt32)constantBitrate error:(NSError **)error;
-
 
 /**
  * @see kVTCompressionPropertyKey_Quality
