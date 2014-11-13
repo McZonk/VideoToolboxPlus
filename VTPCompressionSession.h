@@ -21,6 +21,8 @@
 	VTCompressionSessionRef compressionSession;
 }
 
++ (BOOL)hasHardwareSupportForCodec:(CMVideoCodecType)codec;
+
 - (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec error:(NSError **)error;
 
 @property (nonatomic, weak, readonly) id<VTPCompressionSessionDelegate> delegate;

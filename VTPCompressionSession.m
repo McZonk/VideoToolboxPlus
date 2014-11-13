@@ -1,6 +1,7 @@
 #import "VTPCompressionSession.h"
 
 #import "NSError+VTPError.h"
+#import "VTPCompressionSession+Properties.h"
 
 
 @interface VTPCompressionSession ()
@@ -12,6 +13,12 @@
 
 
 @implementation VTPCompressionSession
+
++ (BOOL)hasHardwareSupportForCodec:(CMVideoCodecType)codec
+{
+	VTPCompressionSession *compressionSession = [[self alloc] initWithWidth:1280 height:720 codec:codec error:nil];
+	return compressionSession.usingHardwareAcceleratedVideoEncoder;
+}
 
 - (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec error:(NSError **)outError
 {
