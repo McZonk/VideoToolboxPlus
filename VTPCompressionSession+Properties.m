@@ -110,6 +110,16 @@
 	return [self setValue:profileLevel forProperty:(__bridge NSString *)kVTCompressionPropertyKey_ProfileLevel error:error];
 }
 
+- (NSString *)H264EntropyMode
+{
+	return [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_H264EntropyMode error:nil];
+}
+
+- (BOOL)setH264EntropyMode:(NSString *)H264EntropyMode error:(NSError **)error
+{
+	return [self setValue:H264EntropyMode forProperty:(__bridge NSString *)kVTCompressionPropertyKey_H264EntropyMode error:error];
+}
+
 - (BOOL)realtime
 {
 	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_RealTime error:nil];

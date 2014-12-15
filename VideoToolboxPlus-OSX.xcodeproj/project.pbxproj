@@ -16,6 +16,8 @@
 		5076C76918E1F4C100844EBC /* VTPCompressionSession+Properties.h in Headers */ = {isa = PBXBuildFile; fileRef = 5076C76718E1F4C100844EBC /* VTPCompressionSession+Properties.h */; };
 		5076C76A18E1F4C100844EBC /* VTPCompressionSession+Properties.m in Sources */ = {isa = PBXBuildFile; fileRef = 5076C76818E1F4C100844EBC /* VTPCompressionSession+Properties.m */; };
 		509D920118DF930800FC9A7A /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 509D920018DF930800FC9A7A /* Cocoa.framework */; };
+		50FD861C1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.h in Headers */ = {isa = PBXBuildFile; fileRef = 50FD861A1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.h */; };
+		50FD861D1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.m in Sources */ = {isa = PBXBuildFile; fileRef = 50FD861B1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +35,8 @@
 		509D920418DF930800FC9A7A /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 		509D920518DF930800FC9A7A /* AppKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AppKit.framework; path = System/Library/Frameworks/AppKit.framework; sourceTree = SDKROOT; };
 		509D921118DF930800FC9A7A /* XCTest.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = XCTest.framework; path = Library/Frameworks/XCTest.framework; sourceTree = DEVELOPER_DIR; };
+		50FD861A1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VTPCompressionSession+PropertiesFromDictionary.h"; sourceTree = "<group>"; };
+		50FD861B1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "VTPCompressionSession+PropertiesFromDictionary.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,6 +62,8 @@
 				5076C76218E1F37000844EBC /* VTPCompressionSession.m */,
 				5076C76718E1F4C100844EBC /* VTPCompressionSession+Properties.h */,
 				5076C76818E1F4C100844EBC /* VTPCompressionSession+Properties.m */,
+				50FD861A1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.h */,
+				50FD861B1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.m */,
 			);
 			name = VideoToolboxPlus;
 			sourceTree = "<group>";
@@ -110,6 +116,7 @@
 				5076C76518E1F37000844EBC /* VTPCompressionSession.h in Headers */,
 				5076C76918E1F4C100844EBC /* VTPCompressionSession+Properties.h in Headers */,
 				5076C75D18E1F34A00844EBC /* VideoToolboxPlus-Prefix.pch in Headers */,
+				50FD861C1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.h in Headers */,
 				5076C76318E1F37000844EBC /* NSError+VTPError.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -166,6 +173,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				5076C76618E1F37000844EBC /* VTPCompressionSession.m in Sources */,
+				50FD861D1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.m in Sources */,
 				5076C76A18E1F4C100844EBC /* VTPCompressionSession+Properties.m in Sources */,
 				5076C76418E1F37000844EBC /* NSError+VTPError.m in Sources */,
 			);

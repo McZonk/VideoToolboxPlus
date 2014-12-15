@@ -4,12 +4,6 @@
 	
 // kVTCompressionPropertyKey_VideoEncoderPixelBufferAttributes Read-only, CFDictionary
 
-#if 0
-	VT_EXPORT const CFStringRef kVTCompressionPropertyKey_H264EntropyMode VT_AVAILABLE_STARTING(10_9);	// Read/write, CFString, optional
-	VT_EXPORT const CFStringRef kVTH264EntropyMode_CAVLC VT_AVAILABLE_STARTING(10_9);
-	VT_EXPORT const CFStringRef kVTH264EntropyMode_CABAC VT_AVAILABLE_STARTING(10_9);
-#endif
-	
 // VT_EXPORT const CFStringRef kVTCompressionPropertyKey_Depth VT_AVAILABLE_STARTING(10_8); // Read/write, CFNumber (CMPixelFormatType), Optional
 	
 // VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MaxFrameDelayCount VT_AVAILABLE_STARTING(10_8); // Read/write, CFNumber, Optional
@@ -144,6 +138,26 @@
 // VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MoreFramesBeforeStart VT_AVAILABLE_STARTING(10_8); // Read/write, CFBoolean, Optional
 
 // VT_EXPORT const CFStringRef kVTCompressionPropertyKey_MoreFramesAfterEnd VT_AVAILABLE_STARTING(10_8); // Read/write, CFBoolean, Optional
+
+/**
+ * @see kVTCompressionPropertyKey_ProfileLevel
+ */
+- (NSString *)profileLevel;
+
+/**
+ * @see kVTCompressionPropertyKey_ProfileLevel
+ */
+- (BOOL)setProfileLevel:(NSString *)profileLevel error:(NSError **)error;
+
+/**
+ * @see kVTCompressionPropertyKey_H264EntropyMode
+ */
+- (NSString *)H264EntropyMode;
+
+/**
+ * @see kVTCompressionPropertyKey_H264EntropyMode
+ */
+- (BOOL)setH264EntropyMode:(NSString *)H264EntropyMode error:(NSError **)error;
 
 /**
  * @see kVTCompressionPropertyKey_RealTime

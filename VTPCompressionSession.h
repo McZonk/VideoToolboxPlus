@@ -16,10 +16,7 @@
 @end
 
 
-@interface VTPCompressionSession : NSObject {
-@protected
-	VTCompressionSessionRef compressionSession;
-}
+@interface VTPCompressionSession : NSObject
 
 + (BOOL)hasHardwareSupportForCodec:(CMVideoCodecType)codec;
 

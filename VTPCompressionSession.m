@@ -5,6 +5,10 @@
 
 
 @interface VTPCompressionSession ()
+{
+@protected
+	VTCompressionSessionRef compressionSession;
+}
 
 @property (nonatomic, weak) id<VTPCompressionSessionDelegate> delegate;
 @property (nonatomic, strong) dispatch_queue_t delegateQueue;

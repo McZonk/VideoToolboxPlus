@@ -5,3 +5,4 @@
 
 #import "VTPCompressionSession.h"
 #import "VTPCompressionSession+Properties.h"
+#import "VTPCompressionSession+PropertiesFromDictionary.h"
