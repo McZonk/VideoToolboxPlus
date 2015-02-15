@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5076C75D18E1F34A00844EBC /* VideoToolboxPlus-Prefix.pch in Headers */ = {isa = PBXBuildFile; fileRef = 5076C75B18E1F34A00844EBC /* VideoToolboxPlus-Prefix.pch */; };
 		5076C75E18E1F34A00844EBC /* VideoToolboxPlus.h in Headers */ = {isa = PBXBuildFile; fileRef = 5076C75C18E1F34A00844EBC /* VideoToolboxPlus.h */; };
 		5076C76318E1F37000844EBC /* NSError+VTPError.h in Headers */ = {isa = PBXBuildFile; fileRef = 5076C75F18E1F37000844EBC /* NSError+VTPError.h */; };
 		5076C76418E1F37000844EBC /* NSError+VTPError.m in Sources */ = {isa = PBXBuildFile; fileRef = 5076C76018E1F37000844EBC /* NSError+VTPError.m */; };
@@ -21,7 +20,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5076C75B18E1F34A00844EBC /* VideoToolboxPlus-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "VideoToolboxPlus-Prefix.pch"; sourceTree = "<group>"; };
 		5076C75C18E1F34A00844EBC /* VideoToolboxPlus.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VideoToolboxPlus.h; sourceTree = "<group>"; };
 		5076C75F18E1F37000844EBC /* NSError+VTPError.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSError+VTPError.h"; sourceTree = "<group>"; };
 		5076C76018E1F37000844EBC /* NSError+VTPError.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSError+VTPError.m"; sourceTree = "<group>"; };
@@ -54,7 +52,6 @@
 		5076C75A18E1F34100844EBC /* VideoToolboxPlus */ = {
 			isa = PBXGroup;
 			children = (
-				5076C75B18E1F34A00844EBC /* VideoToolboxPlus-Prefix.pch */,
 				5076C75C18E1F34A00844EBC /* VideoToolboxPlus.h */,
 				5076C75F18E1F37000844EBC /* NSError+VTPError.h */,
 				5076C76018E1F37000844EBC /* NSError+VTPError.m */,
@@ -115,7 +112,6 @@
 				5076C75E18E1F34A00844EBC /* VideoToolboxPlus.h in Headers */,
 				5076C76518E1F37000844EBC /* VTPCompressionSession.h in Headers */,
 				5076C76918E1F4C100844EBC /* VTPCompressionSession+Properties.h in Headers */,
-				5076C75D18E1F34A00844EBC /* VideoToolboxPlus-Prefix.pch in Headers */,
 				50FD861C1A3F497500D804AC /* VTPCompressionSession+PropertiesFromDictionary.h in Headers */,
 				5076C76318E1F37000844EBC /* NSError+VTPError.h in Headers */,
 			);
@@ -256,8 +252,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VideoToolboxPlus-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Debug;
@@ -266,8 +260,6 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				COMBINE_HIDPI_IMAGES = YES;
-				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "VideoToolboxPlus-Prefix.pch";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 			};
 			name = Release;
