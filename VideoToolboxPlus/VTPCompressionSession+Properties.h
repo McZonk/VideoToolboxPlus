@@ -169,9 +169,11 @@
  */
 - (BOOL)setRealtime:(BOOL)realtime error:(NSError **)error;
 
+#if !TARGET_OS_IPHONE
 /**
  * @see kVTCompressionPropertyKey_UsingHardwareAcceleratedVideoEncoder
  */
 - (BOOL)usingHardwareAcceleratedVideoEncoder;
+#endif
 
 @end

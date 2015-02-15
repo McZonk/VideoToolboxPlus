@@ -18,11 +18,13 @@
 
 @implementation VTPCompressionSession
 
+#if !TARGET_OS_IPHONE
 + (BOOL)hasHardwareSupportForCodec:(CMVideoCodecType)codec
 {
 	VTPCompressionSession *compressionSession = [[self alloc] initWithWidth:1280 height:720 codec:codec error:nil];
 	return compressionSession.usingHardwareAcceleratedVideoEncoder;
 }
+#endif
 
 - (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec error:(NSError **)outError
 {
