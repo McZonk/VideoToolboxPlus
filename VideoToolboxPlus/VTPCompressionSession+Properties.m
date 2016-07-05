@@ -131,10 +131,12 @@
 	return [self setValue:@(realtime) forProperty:(__bridge NSString *)kVTCompressionPropertyKey_RealTime error:nil];
 }
 
+#if !TARGET_OS_IPHONE
 - (BOOL)usingHardwareAcceleratedVideoEncoder
 {
 	NSNumber *value = [self valueForProperty:(__bridge NSString *)kVTCompressionPropertyKey_UsingHardwareAcceleratedVideoEncoder error:nil];
 	return value.boolValue;
 }
+#endif
 
 @end

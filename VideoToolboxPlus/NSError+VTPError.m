@@ -13,7 +13,7 @@ static NSString * DescriptionWithStatus(OSStatus status)
 			return @"Property Not Supported";
 			
 		default:
-			return [NSString stringWithFormat:@"Video Toolbox Error: %d", status];
+			return [NSString stringWithFormat:@"Video Toolbox Error: %d", (int)status];
 	}
 }
 

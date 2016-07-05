@@ -18,7 +18,9 @@
 
 @interface VTPCompressionSession : NSObject
 
+#if !TARGET_OS_IPHONE
 + (BOOL)hasHardwareSupportForCodec:(CMVideoCodecType)codec;
+#endif
 
 - (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec error:(NSError **)error;
 
