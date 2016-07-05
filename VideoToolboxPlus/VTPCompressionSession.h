@@ -46,6 +46,8 @@
 
 - (void)setDelegate:(id<VTPCompressionSessionDelegate>)delegate queue:(dispatch_queue_t)queue;
 
+- (CVPixelBufferPoolRef)pixelBufferPool;
+
 - (id)valueForProperty:(NSString *)property error:(NSError **)outError;
 - (BOOL)setValue:(id)value forProperty:(NSString *)property error:(NSError **)outError;
 

@@ -80,6 +80,11 @@
 	self.delegateQueue = queue;
 }
 
+- (CVPixelBufferPoolRef)pixelBufferPool
+{
+	return VTCompressionSessionGetPixelBufferPool(compressionSession);
+}
+
 - (id)valueForProperty:(NSString *)property error:(NSError **)outError
 {
 	CFTypeRef value = NULL;
