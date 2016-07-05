@@ -26,18 +26,23 @@
 }
 #endif
 
-- (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec error:(NSError **)outError
+- (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec error:(NSError **)error
+{
+	NSDictionary<NSString *, id> *encoderSpecification = @{
+#if !TARGET_OS_IPHONE && MAC_OS_X_VERSION_MAX_ALLOWED >= 1090
+		(__bridge NSString *)kVTVideoEncoderSpecification_EnableHardwareAcceleratedVideoEncoder: @YES
+#endif
+	};
+
+	return [self initWithWidth:width height:height codec:codec encoderSpecification:encoderSpecification sourceImageBufferAttributes:nil error:error];
+}
+
+- (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec encoderSpecification:(NSDictionary<NSString *, id> *)encoderSpecification sourceImageBufferAttributes:(NSDictionary<NSString *, id> *)sourceImageBufferAttributes error:(NSError **)outError
 {
 	self = [super init];
 	if(self != nil)
 	{
-		NSDictionary *encoderSpecification = @{
-#if !TARGET_OS_IPHONE
-			(__bridge NSString *)kVTVideoEncoderSpecification_EnableHardwareAcceleratedVideoEncoder: @YES
-#endif
-		};
-
-		OSStatus status = VTCompressionSessionCreate(NULL, (int32_t)width, (int32_t)height, codec, (__bridge CFDictionaryRef)encoderSpecification, NULL, NULL, VideoCompressonOutputCallback, (__bridge void *)self, &compressionSession);
+		OSStatus status = VTCompressionSessionCreate(NULL, (int32_t)width, (int32_t)height, codec, (__bridge CFDictionaryRef)encoderSpecification, (__bridge CFDictionaryRef)sourceImageBufferAttributes, NULL, VideoCompressonOutputCallback, (__bridge void *)self, &compressionSession);
 		if(status != noErr)
 		{
 			NSError *error = [NSError videoToolboxErrorWithStatus:status];

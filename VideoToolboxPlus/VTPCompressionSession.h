@@ -22,7 +22,24 @@
 + (BOOL)hasHardwareSupportForCodec:(CMVideoCodecType)codec;
 #endif
 
+/**
+ * Creates a VTPCompressionSession with kVTVideoEncoderSpecification_EnableHardwareAcceleratedVideoEncoder.
+ * Calls the designated initializer.
+ */
 - (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec error:(NSError **)error;
+
+/**
+ * Creates a VTPCompressionSession
+ * @param width The width of frames, in pixels.
+ * @param height The height of frames in pixels.
+ * @param codec The codec type.
+ * @param encoderSpecification Specifies a particular video encoder that must be used.
+ * @param sourceImageBufferAttributes Required attributes for source pixel buffers, used when creating a pixel buffer pool for source frames. (Using pixel buffers not allocated by the Video Toolbox may increase the chance that it will be necessary to copy image data.)
+ * @param error Output error.
+ */
+- (instancetype)initWithWidth:(NSInteger)width height:(NSInteger)height codec:(CMVideoCodecType)codec encoderSpecification:(NSDictionary<NSString *, id> *)encoderSpecification sourceImageBufferAttributes:(NSDictionary<NSString *, id> *)sourceImageBufferAttributes error:(NSError **)error NS_DESIGNATED_INITIALIZER;
+
+- (instancetype)init NS_UNAVAILABLE;
 
 @property (nonatomic, weak, readonly) id<VTPCompressionSessionDelegate> delegate;
 @property (nonatomic, strong, readonly) dispatch_queue_t delegateQueue;
